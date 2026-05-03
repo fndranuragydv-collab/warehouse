@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warehouse - Inventory Management</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=18">
+</head>
+<body>
+
+  <!-- MOBILE BLOCKER -->
+  <div id="mobile-blocker" class="mobile-blocker" style="display:none">
+    <span class="material-icons-round">desktop_windows</span>
+    <h2>Desktop Only</h2>
+    <p>This application is only available on desktop screens (1024px or wider). Please open on a PC or Laptop to continue.</p>
+  </div>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash-screen" class="splash">
+    <div class="splash-content">
+      <div class="splash-icon material-icons-round">warehouse</div>
+      <h2>WarehouseOS</h2>
+      <p style="opacity:0.8;margin-top:8px">Loading System...</p>
+    </div>
+  </div>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="login-screen" style="display:none">
+    <div class="login-card">
+      <div class="splash-icon material-icons-round" style="color:var(--primary); font-size:48px; animation:none;">lock</div>
+      <h2>Welcome Back</h2>
+      <form onsubmit="handleLogin(event)">
+        <input type="text" id="username" placeholder="Email or Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN APP SHELL -->
+  <div id="app-shell" style="display:none">
+    
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <span class="material-icons-round" style="color:var(--primary); margin-right:12px;">widgets</span>
+        Warehouse
+      </div>
+      <div class="sidebar-nav">
+        <a class="nav-item active" id="nav-dashboard" onclick="navigate('dashboard')">
+          <span class="material-icons-round">dashboard</span> Dashboard
+        </a>
+        <a class="nav-item" id="nav-inventory" onclick="navigate('inventory')">
+          <span class="material-icons-round">inventory_2</span> SKU Master
+        </a>
+        <a class="nav-item" id="nav-purchase" onclick="navigate('purchase')">
+          <span class="material-icons-round">shopping_cart</span> Purchases
+        </a>
+        <a class="nav-item" id="nav-orders" onclick="navigate('orders')">
+          <span class="material-icons-round">local_shipping</span> Orders
+        </a>
+        <a class="nav-item" id="nav-returns" onclick="navigate('returns')">
+          <span class="material-icons-round">assignment_return</span> Returns
+        </a>
+        <a class="nav-item" id="nav-payments" onclick="navigate('payments')">
+          <span class="material-icons-round">payments</span> Payments
+        </a>
+        <a class="nav-item" id="nav-racks" onclick="navigate('racks')">
+          <span class="material-icons-round">grid_view</span> Racks
+        </a>
+        <a class="nav-item" id="nav-export" onclick="navigate('export')">
+          <span class="material-icons-round">download</span> Export
+        </a>
+        <a class="nav-item" id="nav-admin" onclick="navigate('admin')">
+          <span class="material-icons-round">admin_panel_settings</span> Admin
+        </a>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="main-wrapper">
+      
+      <!-- TOP NAVBAR -->
+      <div class="navbar">
+        <h2 id="page-title">Dashboard</h2>
+        <div class="navbar-right" style="display:flex; align-items:center; gap:16px;">
+          <div id="warehouse-switcher-container"></div>
+          <div class="user-info" onclick="showProfile()" style="cursor:pointer; padding:4px 12px; border-radius:8px; transition:0.2s;" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background='transparent'">
+            <div class="avatar" id="avatar-initial">A</div>
+            <span class="user-name" id="welcome-name">Admin</span>
+          </div>
+          <button class="icon-btn" onclick="logout()" title="Logout"><span class="material-icons-round">logout</span></button>
+        </div>
+      </div>
+
+      <!-- PAGE CONTENT -->
+      <div class="page-container" id="page-content">
+        <!-- Content gets injected here by JS -->
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL OVERLAY -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Modal Title</h3>
+        <button class="icon-btn" onclick="closeModal()"><span class="material-icons-round">close</span></button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Modal content injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/db.js?v=18"></script>
+  <script src="js/auth.js?v=18"></script>
+  <script src="js/pages.js?v=18"></script>
+  <script src="js/pages2.js?v=18"></script>
+  <script src="js/app.js?v=18"></script>
+</body>
+</html>
